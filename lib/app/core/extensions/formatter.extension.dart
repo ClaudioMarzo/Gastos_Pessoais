@@ -8,9 +8,4 @@ extension FormatterExtension on double {
     );
     return currencyForm.format(this);
   }
-
-  DateFormat get currencyDatePTBR {
-    final currencyDate = DateFormat.yMd('d MM y');
-    return currencyDate;
-  }
 }

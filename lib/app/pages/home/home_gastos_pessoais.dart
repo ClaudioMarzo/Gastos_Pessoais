@@ -3,6 +3,9 @@ import 'package:gastos_pessoais/app/core/ui/helpers/size_extensions.dart';
 import 'package:gastos_pessoais/app/core/ui/widgets/gastos_app_bar.dart';
 import 'package:gastos_pessoais/app/core/ui/widgets/gastos_app_card.dart';
 import 'package:gastos_pessoais/app/models/transaction.dart';
+import 'package:gastos_pessoais/app/models/transaction_user.dart';
+
+import '../../core/ui/widgets/gastos_app_form.dart';
 
 class HomeGastosPessoais extends StatefulWidget {
   const HomeGastosPessoais({Key? key}) : super(key: key);
@@ -11,28 +14,16 @@ class HomeGastosPessoais extends StatefulWidget {
 }
 
 class _HomeGastosPessoaisState extends State<HomeGastosPessoais> {
-  final _transaction = [
-    Transaction(
-      id: '1',
-      title: 'Nova tenis',
-      value: 100,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '2',
-      title: 'Biscoito',
-      value: 2,
-      date: DateTime.now(),
-    ),
-  ];
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+  late String valor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DeliveryAppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
             width: context.screenWidth,
@@ -42,18 +33,11 @@ class _HomeGastosPessoaisState extends State<HomeGastosPessoais> {
               child: Text('Gráfico'),
             ),
           ),
-          Column(
-            children: _transaction.map((tr) {
-              return Card(
-                child: GastosAppCard(
-                  id: tr.id,
-                  title: tr.title,
-                  value: tr.value,
-                  date: tr.date,
-                ),
-              );
-            }).toList(),
-          ),
+          const TransactionUser(),
+          GastosAppForm(
+            title: titleController,
+            value: valueController,
+          )
         ],
       ),
     );

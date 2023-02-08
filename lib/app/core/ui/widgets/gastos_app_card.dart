@@ -20,7 +20,6 @@ class GastosAppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var currencyDate;
     return Row(
       children: <Widget>[
         Container(
@@ -44,8 +43,9 @@ class GastosAppCard extends StatelessWidget {
           ),
         ),
         Container(
-          width: context.percentWidth(.7),
+          width: context.percentWidth(.6),
           height: 80,
+          padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
